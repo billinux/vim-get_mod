@@ -1,0 +1,63 @@
+Lien : http://michel.petit9.free.fr/article/correction-orthographique-editeur-vim/
+
+
+Installation des dictionnaires manquants
+
+En premier lieu, pour qu’il puisse y avoir une correction orthographique, il faut un dictionnaire… De base, sur mon système Ubuntu, je n’ai que l’anglais. Donc, pour avoir le français, il faut installer les dictionnaires manquants. Rassurez-vous, c’est enfantin, puisqu’il suffit de les récupérer sur le site de vim et de les placer au bon endroit sur le système.
+
+Rendez-vous avec votre navigateur internet préféré sur la page du site web de vim listant les dictionnaires disponibles à cette URL : http://ftp.vim.org/vim/runtime/spell/. Sélectionnez le ou les dictionnaires que vous désirez, dans notre cas, ce sera le français avec les fichiers suivants :
+
+    fr.latin1.spl
+
+    fr.latin1.sug
+
+    fr.utf-8.spl
+
+    fr.utf-8.sug
+
+Pour être plus rapide, utilisez un terminal et copiez-collez ce qui suit :
+
+user@computer$ wget http://ftp.vim.org/vim/runtime/spell/fr.latin1.spl
+user@computer$ wget http://ftp.vim.org/vim/runtime/spell/fr.latin1.sug
+user@computer$ wget http://ftp.vim.org/vim/runtime/spell/fr.utf-8.spl
+user@computer$ wget http://ftp.vim.org/vim/runtime/spell/fr.utf-8.sug
+
+Une fois que vous les avez téléchargés, placez-les au choix dans l’un de ces deux dossiers :
+
+    /usr/share/vim/vim7X/spell/, attention, il faut étre root, et mettez le bon numéro de version à la place du X. L’avantage de ce dossier est de rendre les dictionnaires téléchargés disponibles pour tous les utilisateurs. Si vous êtes sur un système BSD, le chemin sera /usr/local/share/vim/vim7X/spell/.
+
+    ~/.vim/spell/, dans ce cas, les dictionnaires ne seront disponibles que pour vous.
+
+C’est tout ce qu’il y a à faire pour avoir les dictionnaires ! Vous pouvez en mettre autant que vous voulez !
+▴ Vers le haut ▴
+Activation
+
+Maintenant que vous avez vos dictionnaires, il est temps d’activer la correction orthographique. Si vous utilisez gvim, il suffit de vous rendre dans Outils⇾Orthographe⇾Français (fr), si vous êtes en mode texte uniquement, il faut utiliser la commande suivante :
+
+:setlocal spell spelllang=fr
+
+Une autre manière de procéder est d’activer la correction orthographique automatiquement au lancement de certains types de fichier, en ajoutant les lignes suivantes au fichier de configuration de vim :
+
+augroup filetypedetect
+au BufNewFile,BufRead *.txt setlocal spell spelllang=fr
+augroup END
+
+Dans ce cas, tous les fichiers *.txt auront la correction orthographique activée systèmatiquement au lancement.
+▴ Vers le haut ▴
+Utilisation
+
+L’utilisation en mode commande est simple :
+
+    ]+s déplace le curseur à l’erreur suivante,
+
+    [+s déplace le curseur à l’erreur précédente,
+
+    z+= suggère une solution pour le mot sous le curseur.
+
+Si vous utiliser gvim, tout se trouve dans Outils⇾Orthographe.
+
+Pour avoir une aide détaillée sur la correction orthographique sous vim, le plus simple est de faire en mode commande :
+
+:help spell
+
+Maintenant, vous n’avez plus aucune excuse pour avoir des fautes d’orthographe dans vos fichiers de programmation !
