@@ -1,3 +1,5 @@
+filetype off
+
 " register bundles found in the runtimepath
 runtime bundle/vim-unbundle/unbundle.vim
 
@@ -5,7 +7,8 @@ runtime bundle/vim-unbundle/unbundle.vim
 runtime! config/**/*.vim
 
 
-syntax on
+filetype plugin indent on
 
+syntax on
 
 set nocompatible
