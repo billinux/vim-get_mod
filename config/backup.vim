@@ -16,16 +16,15 @@ set noswapfile
 set viewdir=~/.vim-tmp/view/
 set viewoptions-=options
 
-augroup views
-    au!
-
-    autocmd BufWritePost *.php,*.py,*.rb
-    \   if expand('%') != '' && &buftype !~ 'nofile'
-    \|      mkview
-    \|  endif
-    autocmd BufRead *.php,*.py,*.rb
-    \   if expand('%') != '' && &buftype !~ 'nofile'
-    \|      silent loadview
-    \|  endif
-augroup END
-
+"augroup views
+"    au!
+"
+"    autocmd BufWritePost *.php,*.py,*.rb
+"    \   if expand('%') != '' && &buftype !~ 'nofile'
+"    \|      mkview
+"    \|  endif
+"    autocmd BufRead *.php,*.py,*.rb
+"    \   if expand('%') != '' && &buftype !~ 'nofile'
+"    \|      silent loadview
+"    \|  endif
+"augroup END
