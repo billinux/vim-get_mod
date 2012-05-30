@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DIR=`git s | awk '{print $NF }'`
+DIR=`git status | awk '{print $NF }'`
 SUCCESS=0
 
 
