@@ -54,8 +54,8 @@ augroup ftype
     "au BufNewFile *.html 0r ~/.vim/template/html.tpl | :normal Gdda
     au BufNewFile,BufRead *.html setlocal nowrap
     au FileType html nnoremap <buffer> <localleader>f Vatzf
-    au FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
-    au FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/vim-closetag/plugin/closetag.vim
+    au FileType php,html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
+"    au FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/vim-closetag/plugin/closetag.vim
     au BufEnter *html map <F8> :setfiletype htmldjango<cr>
     au BufEnter *html map <S-F8> :setfiletype django<cr>
 
@@ -67,10 +67,7 @@ augroup ftype
     "au BufNewFile *.php 0r ~/.vim/template/php.tpl | normal Gdda
     "au BufNewFile *.html,*.php silent! 0r $HOME/.vim/templates/%:e.tpl | normal Gdda
     au BufRead,BufNewFile *.phps set filetype=php
-    " http://mwop.net/slides/2012-01-28-Vim/VimUnixToolchain.html#slide39
-    " pear install doc.php.net/pman
-    " au FileType php set keywordprg=/usr/bin/pman
-    " Type 'K' or 'ctrl+k' to access php doc
+    au BufEnter *.php noremap <F9> :setfiletype html<cr>
 
     " API Yii framework
     au BufNewFile,Bufread *.php set keywordprg="help"
