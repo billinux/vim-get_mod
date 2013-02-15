@@ -1,4 +1,4 @@
-# billinux's modular Vim configuration
+# sunaku.vim bootstrap (master branch)
 
 Unlike most Vim configurations you find on the Internet, this one is modular:
 *not* a single giant `vimrc` file!  May it help you journey the lands of Vim.
@@ -7,25 +7,23 @@ Unlike most Vim configurations you find on the Internet, this one is modular:
 
 Branches
 
-* The _master_ branch is a bare bones template for anyone to start with.
+* The **master** branch is a bare bones template for anyone to start with.
 
-* The _config_ branch adds my personal configuration of standard Vim.
+* The **config** branch adds my personal configuration of standard Vim.
 
-* The _bundle_ branch adds Vim scripts (bundles) and their configuration.
-
-Configuration
-
-* `config.vim` activates your bundles and then loads your Vim configuration.
-
-* `config/**/*.vim` is your Vim configuration, organized into files by topic.
-
-* `config/bundle/**/*.vim` is your bundle configuration; one file per bundle.
+* The **bundle** branch adds my chosen bundles and their configuration.
 
 Bundles
 
 * `**/*.get` specify the URLs of Git repositories to clone for your bundles.
 
 * `bundle/*/` and `ftbundle/*/*/` are your bundles, according to [Unbundle].
+
+Configuration
+
+* `config.vim` activates your bundles and then loads your Vim configuration.
+
+* `config/**/*.vim` is your Vim configuration, organized into files by topic.
 
 ## Prerequisites
 
@@ -37,7 +35,7 @@ Bundles
 
 [Unbundle]: https://github.com/sunaku/vim-unbundle
 
-## Installation
+## Installing
 
 Backup your configuration:
 
@@ -46,7 +44,7 @@ Backup your configuration:
 
 Install this configuration:
 
-    git clone git://github.com/billinux/vim-get.git ~/.vim
+    git clone git://github.com/sunaku/.vim.git ~/.vim
     ln -s ~/.vim/config.vim ~/.vimrc
 
 Select a Git branch to use:
@@ -56,14 +54,53 @@ Select a Git branch to use:
     git checkout config  # bare bones + my config
     git checkout bundle  # bare bones + my config + my bundles
 
-Clone bundles from `*.get` files:
+Install bundles from `*.get` files:
 
     cd ~/.vim
     sh bundle.sh
 
+## Bundling
+
+Add bundle from *URL*:
+
+    cd ~/.vim
+    sh addnew.sh URL
+
+Add ftbundle for *FILETYPE* from *URL*:
+
+    cd ~/.vim
+    sh addnew.sh URL FILETYPE
+
+Remove bundle called *NAME* (regexp):
+
+    cd ~/.vim
+    sh remove.sh NAME
+
+Remove ftbundle for *FILETYPE* called *NAME* (regexp):
+
+    cd ~/.vim
+    sh remove.sh FILETYPE/NAME
+
+List bundles and ftbundles that lack corresponding `*.get` files:
+
+    cd ~/.vim
+    sh zombie.sh
+
+## Locking
+
+Lock a *BUNDLE* to a certain Git *COMMIT* to prevent it from being upgraded:
+
+    cd BUNDLE
+    git checkout COMMIT
+
+Unlock a locked *BUNDLE* so that it can be upgraded again:
+
+    cd BUNDLE
+    git checkout master
+
 ## Upgrading
 
-Upgrade copy of this configuration:
+Upgrade the configuration framework:
 
     cd ~/.vim
     sh rebase.sh
