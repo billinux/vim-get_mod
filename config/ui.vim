@@ -42,5 +42,14 @@ augroup line_return
         \ endif
 augroup END
 
+set -o vi
+
+" A popular option to indicate switching to Insert mode (and back to Normal mode)
+" is toggling the cursorline option that is responsible for whether the current screen line is highlighted.
+augroup curseur
+    au!
+    au InsertEnter,InsertLeave * set cul!
+augroup END
+
 nnoremap <leader>, :set invnumber<cr>
 nnoremap <leader>; :set relativenumber<cr>
