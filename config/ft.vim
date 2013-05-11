@@ -8,6 +8,9 @@ augroup ftype
     " parse special text in the templates after the read
     autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
 
+    " Git------------------------------------------------------------------------------------------
+    au BufRead,BufNewFile */gitconfig setfiletype gitconfig
+
     " Help-----------------------------------------------------------------------------------------
     au FileType helpfile setlocal textwidth=80
     au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
